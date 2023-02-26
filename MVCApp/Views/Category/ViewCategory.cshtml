@@ -1,0 +1,48 @@
+﻿@model IEnumerable<MVCApp.Models.Category>
+
+@{
+    ViewData["Title"] = "ViewCategory";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>CategoryView</h1>
+
+<div class="container p-1">
+    <div class="row pt-4">
+        <div class="col-6">
+             <h1 class="text-primary">View Product</h1>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Category" asp-action="CreateCategory" class="btn btn-primary">Create Category</a>
+        </div>
+    </div>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditCategory", item) |
+                @Html.ActionLink("Delete", "DeleteCategory", new { CategoryId = item.CategoryId, CategoryName = item.CategoryName })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

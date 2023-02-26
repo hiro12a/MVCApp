@@ -1,0 +1,47 @@
+﻿@model MVCApp.Models.Purchase
+
+@{
+    ViewData["Title"] = "PurchaseProduct";
+    Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+}
+
+<h1>Purchase Product</h1>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="SavePurchaseProduct">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group mb-3">
+                <input asp-for="EmailId" hidden class="form-control" />
+                <input asp-for="PurchaseId" hidden class="form-control"/>
+                <span asp-validation-for="EmailId" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="ProductId" class="control-label"></label>
+                <input asp-for="ProductId" hidden class="form-control" />
+                <input asp-for="ProductId" disabled class="form-control" />
+                <span asp-validation-for="ProductId" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="QuanityPurchased" class="control-label"></label>
+                <input asp-for="QuanityPurchased" class="form-control" />
+                <span asp-validation-for="QuanityPurchased" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="DateOfPurchase" class="control-label"></label>
+                <input asp-for="DateOfPurchase" hidden class="form-control" />
+                <input asp-for="DateOfPurchase" disabled class="form-control" />
+                <span asp-validation-for="DateOfPurchase" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <input type="submit" value="Purchase" class="btn btn-primary" />
+                <a asp-controller="Customer" asp-action="GetProduct" class="btn btn-secondary">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"/>
+    }
+}
+

@@ -1,0 +1,11 @@
+﻿@inject Microsoft.AspNetCore.Http.IHttpContextAccessor context
+@{
+    ViewData["Title"] = "AdminHome";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="row text-end">
+    <div class="">
+         <h3>Welcome: @context.HttpContext.Session.GetString("username")</h3>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+﻿@model MVCApp.Models.Category
+
+@{
+    ViewData["Title"] = "DeleteCategory";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>Delete Category</h1>
+<hr />
+<div class="container" style="width:100%;">
+    <div class="mb-3">
+        <form asp-action="SaveDeleteCategory" asp-route-id="@Model.CategoryId">         
+            <div class="form-group mb-3">
+                <input hidden asp-for="CategoryId"/>
+                <label asp-for="CategoryName" class="control-label"></label>
+                <input asp-for="CategoryName" disabled class="form-control" />
+                <span asp-validation-for="CategoryName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Delete" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"/>
+    }
+}

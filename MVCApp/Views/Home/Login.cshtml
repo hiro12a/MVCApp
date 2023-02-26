@@ -1,0 +1,52 @@
+﻿@model User
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor context
+@{
+    ViewData["Title"] = "Login";
+}
+<form asp-action="CheckRole">
+    <div class="border p-3 mb-5" style="width:300px;position:absolute;top:40%;left:50%;transform:translate(-50%,-50%);">
+        <div class="row text-center">
+            <h2 class="text-primary">Login</h2>
+            <hr />
+        </div>
+        <div class="mb-3">
+            @{
+                if (context.HttpContext.Request.Cookies["UserId"] != null)
+                {
+                    @Html.TextBox("name", context.HttpContext.Request.Cookies["UserId"], null, new {@class = "form-control"})
+                }
+                else
+                {
+                    @Html.TextBox("name", null, new {@class = "form-control", @placeholder = "Email"})
+                }
+            }
+        </div>
+        <div class="mb-3">
+            @{
+                if (context.HttpContext.Request.Cookies["Password"] != null)
+                {
+                    @Html.Password("password", context.HttpContext.Request.Cookies["Password"], new {@class = "form-control"})
+                }
+                else
+                {
+                    @Html.Password("password", null, new {@placeholder = "Password", @class = "form-control"})
+                }
+            }
+        </div>
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary" style="width:150px; border-radius:50px">Login</button>           
+        </div>   
+        <div class="text-center mb-1">
+            @Html.CheckBox("RememberMe") Remember Me     
+        </div>
+        <div class="text-center">
+            <a asp-controller="Home" asp-action="Register">Register Here</a>
+        </div>
+    </div>
+</form>
+@section Scripts{
+    @{
+    <partial name="_ValidationScriptsPartial"/>
+    }
+}

@@ -1,0 +1,67 @@
+﻿@model IEnumerable<MVCApp.Models.Product>
+
+@{
+    ViewData["Title"] = "ViewProduct";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<div class="container p-1">
+    <div class="row pt-4">
+        <div class="col-6">
+             <h1 class="text-primary">View Product</h1>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Product" asp-action="CreateProduct" class="btn btn-primary">Create Product</a>
+        </div>
+    </div>
+</div>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QuantityAvailable)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuantityAvailable)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditProduct", item) |
+                @Html.ActionLink("Details", "ProductDetails", item) |
+                @Html.ActionLink("Delete", "DeleteProduct", new {  CategoryId = item.CategoryId, Price = item.Price,  ProductId = item.ProductId, 
+                ProductName = item.ProductName, QuantityAvailable = item.QuantityAvailable})
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
