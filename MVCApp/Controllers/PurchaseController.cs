@@ -28,30 +28,26 @@ namespace MVCApp.Controllers
             TempData["ProductName"] = product.ProductName;
             return View(purchaseObj);
         }
-        public IActionResult SavePurchaseProduct(Models.Purchase purchase)
+        public ActionResult SavePurchaseProduct(Models.Purchase purchase)
         {
             bool status = false;
             if (ModelState.IsValid)
             {
                 try
                 {
-                    ViewData["QuantityPurchased"] = purchase.QuanityPurchased;
+                    ViewData["QuantityPurchased"] = purchase.QuantityPurchased;
                     status = repository.PurchaseProduct(_mapper.Map<PurchaseDetails>(purchase));
                     if (status)
-                    {
                         return View("Success");
-                    }
                     else
-                    {
                         return View("Error");
-                    }
                 }
                 catch (Exception)
                 {
                     return View("Error");
                 }
             }
-            return View(purchase);
+            return View("PurchaseProduct", purchase);
         }
     }
 }

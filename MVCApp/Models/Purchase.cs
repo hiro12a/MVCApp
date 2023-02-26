@@ -21,8 +21,8 @@ namespace MVCApp.Models
 
         // Quanity Purchased
         [DisplayName("Quantity Purchased")]
-        [Range(1, int.MaxValue, ErrorMessage = "Quantity Purchased must be greater than 0")]
-        public short QuanityPurchased { get; set; }
+        [Range(1,100000000, ErrorMessage = "Quantity Purchased must be greater than 0")]
+        public short QuantityPurchased { get; set; }
 
 
         // Date of Purchase

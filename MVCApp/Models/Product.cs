@@ -6,6 +6,7 @@ namespace MVCApp.Models
     public class Product
     {
         // Product ID
+        [Key]
         [Required(ErrorMessage = "Product Id is Mandatory")]
         [DisplayName("Product Id")]
         public string ProductId { get; set; }

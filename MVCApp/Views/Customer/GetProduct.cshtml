@@ -42,7 +42,7 @@
                         @item.QuantityAvailable
                     </td>
                     <td>
-                        @Html.ActionLink("Purchase", "PurchaseProduct","Purchase", item)
+                       @Html.ActionLink("Purchase", "PurchaseProduct","Purchase",new { ProductId = item.ProductId,ProductName = item.ProductName, CategoryId = item.CategoryId,Price = item.Price, QuantityAvailable = item.QuantityAvailable })
                     </td>
                 </tr>
             }

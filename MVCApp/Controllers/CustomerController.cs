@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using QuickKartDataAccessLayer;
 using QuickKartDataAccessLayer.Models;
 
@@ -43,6 +44,10 @@ namespace MVCApp.Controllers
             }
             var filteredProducts = products.Where(model => model.CategoryId == categoryId);
             return View(filteredProducts);
+        }
+        public ActionResult Feedback()
+        {
+            return RedirectToAction("WIP");
         }
     }
 }
