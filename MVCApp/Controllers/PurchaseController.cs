@@ -47,7 +47,7 @@ namespace MVCApp.Controllers
                     return View("Error");
                 }
             }
-            return View("PurchaseProduct", purchase);
+            return View(purchase);
         }
     }
 }
