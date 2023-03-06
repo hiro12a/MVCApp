@@ -28,7 +28,7 @@ namespace MVCApp.Controllers
             TempData["ProductName"] = product.ProductName;
             return View(purchaseObj);
         }
-        public ActionResult SavePurchaseProduct(Models.Purchase purchase)
+        public ActionResult SavePurchaseProduct(PurchaseDetails purchase)
         {
             bool status = false;
             if (ModelState.IsValid)
@@ -36,7 +36,7 @@ namespace MVCApp.Controllers
                 try
                 {
                     ViewData["QuantityPurchased"] = purchase.QuantityPurchased;
-                    status = repository.PurchaseProduct(_mapper.Map<PurchaseDetails>(purchase));
+                    status = repository.PurchaseProduct(purchase);
                     if (status)
                         return View("Success");
                     else
